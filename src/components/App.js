@@ -1,59 +1,42 @@
 
-import './App.css';
+
+import '../index.css'
+import Header from './Header'
+import Main from './Main'
+import Footer from './Footer';
 
 function App() {
   return (
     <div className="page__container">
-      <header className="header">
-         <a href="/" className="header__logo"></a>
-      </header>
-      <main className="content">
-         <section className="profile">
-            <div className="profile__avatar-section">
-               <img className="profile__avatar" src="#" alt="Аватар" />
-            </div>
-            <div className="profile__info">
-               <div className="profile__name">
-                  <h1 className="profile__title"></h1>
-                  <button type="button" className="profile__edit-button" aria-label="edit-profile"></button>
-               </div>
-               <p className="profile__description"></p>
-            </div>
-            <button type="button" className="profile__add-button" aria-label="add-photo"></button>
-         </section>
-    
-         <section className="elements">
-         </section>
-      </main>
-      <footer className="footer">
-         <p className="footer__copyright">&copy; 2020 Mesto Russia</p>
-      </footer>
+      <Header />
+      <Main />
+      <Footer />
 
       <div className="popup popup_type_edit">
          <div className="popup__content popup__content_type_edit">
             <button type="button" className="popup__close-button popup__close-button_type_edit" aria-label="close-popup"></button>
             <h2 className="popup__title popup__title_type_edit">Редактировать профиль</h2>
-            <form className="popup__form popup__form_type_edit" name="edit-profile" action="#" method="post" novalidate>
+            <form className="popup__form popup__form_type_edit" name="edit-profile" action="#" method="post" noValidate>
                <div className="popup__input-field">
-                  <input className="popup__input popup__input_content_name" id="name" name="name" type="text" value="Том Йорк" required minlength="2" maxlength="40" placeholder="Имя" />
+                  <input className="popup__input popup__input_content_name" id="name" name="name" type="text" value="Том Йорк" required minLength="2" maxLength="40" placeholder="Имя" />
                   <span className="popup__input-error" id="error-name"></span>
                </div>
                <div className="popup__input-field">
-                  <input className="popup__input popup__input_content_description" id="description" name="about" type="text" value="Моя муза" required minlength="2" maxlength="200" placeholder="Вид деятельности" />
-                  <span classNameName="popup__input-error" id="error-description"></span>
+                  <input className="popup__input popup__input_content_description" id="description" name="about" type="text" value="Моя муза" required minLength="2" maxLength="200" placeholder="Вид деятельности" />
+                  <span className="popup__input-error" id="error-description"></span>
                </div>
-               <button type="submit" classNameName="popup__submit-button" disabled>Сохранить</button>
+               <button type="submit" className="popup__submit-button" disabled>Сохранить</button>
             </form>
          </div>
       </div>   
 
-      <div classNameName="popup popup_type_add">
-         <div classNameName="popup__content popup__content_type_add">
-            <button type="button" classNameName="popup__close-button popup__close-button_type_add" aria-label="close-popup"></button>
+      <div className="popup popup_type_add">
+         <div className="popup__content popup__content_type_add">
+            <button type="button" className="popup__close-button popup__close-button_type_add" aria-label="close-popup"></button>
             <h2 className="popup__title popup__title_type_add">Новое место</h2>
-            <form className="popup__form popup__form_type_add" name="edit-profile" action="#" method="post" novalidate>
+            <form className="popup__form popup__form_type_add" name="edit-profile" action="#" method="post" noValidate>
                <div className="popup__input-field">
-                  <input className="popup__input popup__input_content_place" id="place" name="name" type="text" placeholder="Название" value="" required minlength="2" maxlength="30" />
+                  <input className="popup__input popup__input_content_place" id="place" name="name" type="text" placeholder="Название" value="" required minLength="2" maxLength="30" />
                   <span className="popup__input-error" id="error-place">Вы пропустили это поле</span>
                </div>
                <div className="popup__input-field">
@@ -98,7 +81,7 @@ function App() {
          <div className="popup__content popup__content_type_avatar">
             <button type="button" className="popup__close-button popup__close-button_type_avatar" aria-label="close-popup"></button>
             <h2 className="popup__title popup__title_type_avatar">Обновить аватар?</h2>
-            <form className="popup__form popup__form_type_avatar" name="edit-avatar" action="#" method="post" novalidate>
+            <form className="popup__form popup__form_type_avatar" name="edit-avatar" action="#" method="post" noValidate>
                <div>
                   <input className="popup__input popup__input_content_avatar" id="avatar" name="avatar" type="url" placeholder="Ссылка на аватар" value="" required />
                   <span className="popup__input-error" id="error-avatar">Введите адрес картинки</span>

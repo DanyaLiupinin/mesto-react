@@ -1,0 +1,18 @@
+.page__container {
+   background-color: black;
+   color: white;
+   -webkit-box-sizing: border-box;
+           box-sizing: border-box;
+   width: inherit;
+}
+
+.page__container {
+   padding-top: 45px;
+   margin: 0 auto;
+}
+
+@media (max-width: 620px) {
+   .page__container {
+      padding-top: 28px;
+   }
+}
