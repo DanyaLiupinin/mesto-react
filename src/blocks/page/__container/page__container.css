@@ -3,7 +3,7 @@
    color: white;
    -webkit-box-sizing: border-box;
            box-sizing: border-box;
-   width: inherit;
+   height: 100%;
 }
 
 .page__container {
@@ -16,3 +16,4 @@
       padding-top: 28px;
    }
 }
+
