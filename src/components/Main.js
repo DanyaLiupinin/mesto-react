@@ -1,5 +1,6 @@
 import React from 'react'
 import api from '../utils/Api'
+import Card from './Card'
 
 function Main (props) {
 
@@ -44,20 +45,10 @@ function Main (props) {
             <button type="button" className="profile__add-button" aria-label="add-photo" onClick={props.onAddPlace}></button>
          </section>
          <section className="elements">
-            {  
-            cards.map((cardItem) => (
-               <article className="element" key={cardItem._id}>
-                  <button type="button" className="element__delete" aria-label="delete-photo"></button>
-                  <img className="element__photo" src={cardItem.link} alt="" />
-                  <div className="element__info">
-                     <h2 className="element__title">{cardItem.name}</h2>
-                     <div className="element__like-container">
-                        <button type="button" className="element__like-button" aria-label="like-photo"></button>
-                        <div className="element__like-amount">{cardItem.likes.length}</div>
-                     </div>
-                  </div>
-               </article>
-              ))
+            {
+               cards.map((card) => {
+                  return <Card key={card._id} cardItem={card}/>
+               })
             }
          </section>  
       </main>
