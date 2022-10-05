@@ -1,8 +1,13 @@
-function Card ({cardItem}) {
+function Card ({cardItem, onCardClick}) {
+
+function handleClick () {
+    onCardClick(cardItem)
+}
+
     return (
         <article className="element">
                   <button type="button" className="element__delete" aria-label="delete-photo"></button>
-                  <img className="element__photo" src={cardItem.link} alt="" />
+                  <img className="element__photo" src={cardItem.link} alt="" onClick={handleClick}/>
                   <div className="element__info">
                      <h2 className="element__title">{cardItem.name}</h2>
                      <div className="element__like-container">

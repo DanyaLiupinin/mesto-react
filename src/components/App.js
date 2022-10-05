@@ -6,22 +6,25 @@ import Main from './Main'
 import Footer from './Footer';
 import React from 'react';
 import PopupWithForm from './PopupWithForm';
+import ImagePopup from './ImagePopup'
 
 function App() {
 
+
+   // попапы
+
    const [isEditAvatarPopupOpen, setEditAvatarPopupOpen] = React.useState(false)
+   const [isEditProfilePopupOpen, setEditProfilePopupOpen] = React.useState(false)
+   const [isAddPlacePopupOpen, setAddPlacePopupOpen] = React.useState(false)
+   const [selectedCard, setSelectedCard] = React.useState(false)
 
    function handleEditAvatarClick () {
       setEditAvatarPopupOpen(true)
   }
 
-  const [isEditProfilePopupOpen, setEditProfilePopupOpen] = React.useState(false)
-
   function handleEditProfileClick () {
       setEditProfilePopupOpen(true)
   }
-
-  const [isAddPlacePopupOpen, setAddPlacePopupOpen] = React.useState(false)
 
   function handleAddPlaceClick () {
       setAddPlacePopupOpen(true)
@@ -31,8 +34,12 @@ function App() {
    setEditAvatarPopupOpen(false)
    setEditProfilePopupOpen(false)
    setAddPlacePopupOpen(false)
+   setSelectedCard(false)
   }
 
+  function handleCardClick(card) {
+   setSelectedCard(card)
+  }
 
 
   return (
@@ -42,6 +49,7 @@ function App() {
    onEditProfile={handleEditProfileClick}
    onAddPlace={handleAddPlaceClick}
    onEditAvatar={handleEditAvatarClick} 
+   onCardClick={handleCardClick}
    />
    <Footer /> 
    <PopupWithForm 
@@ -95,32 +103,16 @@ function App() {
          <span className="popup__input-error" id="error-link">Введите адрес сайта</span>
       </div> 
       <button type="submit" className="popup__submit-button" disabled>Создать</button>
-      </>
+      </>  
    }
    />
 
+   <ImagePopup
+   card={selectedCard}
+   onClose={closeAllPopups}
+   />
+      
 
-      <div className="popup popup_type_photo">
-         <div className="popup__content popup__content_type_photo">
-            <img className="popup__photo" src="#" alt="" />
-            <button type="button" className="popup__close-button popup__close-button_type_photo" aria-label="close-popup"></button>
-            <p className="popup__description"></p>
-         </div>
-      </div>
-
-      <template id="card-template">
-         <article className="element">
-            <button type="button" className="element__delete" aria-label="delete-photo"></button>
-            <img className="element__photo" src="#" alt="" />
-            <div className="element__info">
-               <h2 className="element__title"></h2>
-               <div className="element__like-container">
-                  <button type="button" className="element__like-button" aria-label="like-photo"></button>
-                  <div className="element__like-amount"></div>
-               </div>
-            </div>
-         </article>
-      </template>
 
       <div className="popup popup_type_delete">
          <div className="popup__content popup__content_type_delete">
