@@ -43,7 +43,7 @@ function App() {
 
 
   return (
-   <div className="page__container">
+   <div className="page">
    <Header />
    <Main 
    onEditProfile={handleEditProfileClick}
