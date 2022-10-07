@@ -2,35 +2,32 @@ import React from 'react'
 import api from '../utils/Api'
 import Card from './Card'
 
-function Main (props) {
+function Main(props) {
 
-   const [ userName, setUserName ] = React.useState('')
-   const [ userDescription, setUserDescription ] = React.useState()
-   const [ userAvatar, setuserAvatar ] = React.useState()
+   const [userName, setUserName] = React.useState('')
+   const [userDescription, setUserDescription] = React.useState('')
+   const [userAvatar, setuserAvatar] = React.useState('')
+   const [cards, setCards] = React.useState([])
 
    React.useEffect(() => {
+
       api.getUserInfo()
-      .then((data) => {
-         setUserName(data.name)
-         setUserDescription(data.about)
-         setuserAvatar(data.avatar)
-      })
-   }, [])
+         .then((data) => {
+            setUserName(data.name)
+            setUserDescription(data.about)
+            setuserAvatar(data.avatar)
+         })
 
-   const [ cards, setCards ] = React.useState([])
-
-   React.useEffect(() => {
       api.getInitialCards()
-      .then(cards => { 
-         setCards(cards) 
-      })
+         .then(cards => {
+            setCards(cards)
+         })
+         
    }, [])
 
 
-   
-
-    return (
-        <main className="content">
+   return (
+      <main className="content">
          <section className="profile">
             <div className="profile__avatar-section" onClick={props.onEditAvatar}>
                <img className="profile__avatar" src={userAvatar} alt="Аватар" />
@@ -47,12 +44,12 @@ function Main (props) {
          <section className="elements">
             {
                cards.map((card) => {
-                  return <Card key={card._id} cardItem={card} onCardClick={props.onCardClick}/>
+                  return <Card key={card._id} cardItem={card} onCardClick={props.onCardClick} />
                })
             }
-         </section>  
+         </section>
       </main>
-    )
+   )
 }
 
 export default Main
