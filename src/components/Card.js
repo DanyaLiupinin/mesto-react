@@ -1,4 +1,16 @@
+import React from "react"
+
+import { CurrentUserContext } from "../context/CurrentUserContext"
+
 function Card({ cardItem, onCardClick }) {
+
+    // подписка на котекст
+    const currentUser = React.useContext(CurrentUserContext)
+
+    // проверяем, наша ли карточка
+    const isOwn = cardItem.owner._id === currentUser._id
+
+    console.log(isOwn)
 
     function handleClick() {
         onCardClick(cardItem)
@@ -6,7 +18,7 @@ function Card({ cardItem, onCardClick }) {
 
     return (
         <article className="element">
-            <button type="button" className="element__delete" aria-label="delete-photo"></button>
+            { !isOwn ? <button type="button" className="element__delete" aria-label="delete-photo" /> : ''}
             <img className="element__photo" src={cardItem.link} alt={cardItem.name} onClick={handleClick} />
             <div className="element__info">
                 <h2 className="element__title">{cardItem.name}</h2>
