@@ -2,7 +2,7 @@ import React from "react"
 
 import { CurrentUserContext } from "../context/CurrentUserContext"
 
-function Card({ cardItem, onCardClick, onCardLike }) {
+function Card({ cardItem, onCardClick, onCardLike, onCardDelete }) {
 
     // подписка на котекст
     const currentUser = React.useContext(CurrentUserContext)
@@ -25,10 +25,17 @@ function Card({ cardItem, onCardClick, onCardLike }) {
         onCardLike(cardItem)
     }
 
+    // удаление карточки
+
+    function handleCardDelete() {
+        onCardDelete(cardItem)
+    }
+
+
 
     return (
         <article className="element">
-            { isOwn ? <button type="button" className="element__delete" aria-label="delete-photo" /> : ''}
+            { isOwn ? <button onClick={handleCardDelete} type="button" className="element__delete" aria-label="delete-photo" /> : ''}
             <img className="element__photo" src={cardItem.link} alt={cardItem.name} onClick={handleClick} />
             <div className="element__info">
                 <h2 className="element__title">{cardItem.name}</h2>

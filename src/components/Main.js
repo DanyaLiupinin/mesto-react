@@ -17,8 +17,6 @@ function Main(props) {
 
    }, [])
 
-   // лайк на карточку
-
    function handleCardLike(card) {
 
       const isLiked = card.likes.some(like => like._id === currentUser._id)
@@ -36,15 +34,21 @@ function Main(props) {
       .then((newCard) => {
          setCards((state) => state.map((c) => c._id === card._id ? newCard : c));
       });
-
       } else {
-
          api.deleteLike(card._id)
          .then((newCard) => {
             setCards((state) => state.map((c) => c._id === card._id ? newCard : c))
          })
-
       }
+   }
+
+   function handleCardDelete (card) {
+
+      api.deleteCard(card._id)
+      .then((filteredCards) => {
+         setCards((state) => state.filter((element) => element._id !== card._id))
+      })
+
    }
 
    return (
@@ -70,6 +74,7 @@ function Main(props) {
                      cardItem={card}
                      onCardClick={props.onCardClick}
                      onCardLike={handleCardLike}
+                     onCardDelete={handleCardDelete}
                   />
                })
             }
