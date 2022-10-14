@@ -52,6 +52,13 @@ function App() {
       setSelectedCard(card)
    }
 
+   function handleUpdateUser(data) {
+      api.editUserInfo(data)
+      .then((data) => {
+         setCurrentUser(data)
+      })
+   }
+
 
    return (
 
@@ -83,7 +90,9 @@ function App() {
 
             <EditProfilePopup 
             isOpen={isEditProfilePopupOpen} 
-            onClose={closeAllPopups} />
+            onClose={closeAllPopups} 
+            onUpdateUser={handleUpdateUser}
+            />
 
             <PopupWithForm
                name='add'

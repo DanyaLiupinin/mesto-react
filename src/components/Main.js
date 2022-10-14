@@ -15,7 +15,7 @@ function Main(props) {
             setCards(cards)
          })
 
-   }, [])
+   }, [currentUser])
 
    function handleCardLike(card) {
 
