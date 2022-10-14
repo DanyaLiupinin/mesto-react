@@ -9,6 +9,7 @@ import PopupWithForm from './PopupWithForm';
 import ImagePopup from './ImagePopup'
 import api from '../utils/Api';
 import { CurrentUserContext } from '../context/CurrentUserContext';
+import EditProfilePopup from './EditProfilePopup';
 
 function App() {
 
@@ -80,25 +81,9 @@ function App() {
                button='Сохранить'
             />
 
-            <PopupWithForm
-               name='edit'
-               title='Редактировать профиль'
-               isOpen={isEditProfilePopupOpen}
-               onClose={closeAllPopups}
-               children={
-                  <>
-                     <div className="popup__input-field">
-                        <input className="popup__input popup__input_content_name" id="name" name="name" type="text" value="Том Йорк" required minLength="2" maxLength="40" placeholder="Имя" />
-                        <span className="popup__input-error" id="error-name"></span>
-                     </div>
-                     <div className="popup__input-field">
-                        <input className="popup__input popup__input_content_description" id="description" name="about" type="text" value="Моя муза" required minLength="2" maxLength="200" placeholder="Вид деятельности" />
-                        <span className="popup__input-error" id="error-description"></span>
-                     </div>
-                  </>
-               }
-               button='Сохранить'
-            />
+            <EditProfilePopup 
+            isOpen={isEditProfilePopupOpen} 
+            onClose={closeAllPopups} />
 
             <PopupWithForm
                name='add'
