@@ -10,6 +10,7 @@ import ImagePopup from './ImagePopup'
 import api from '../utils/Api';
 import { CurrentUserContext } from '../context/CurrentUserContext';
 import EditProfilePopup from './EditProfilePopup';
+import EditAvatarPopup from './EditAvatarPopup';
 
 function App() {
 
@@ -59,6 +60,13 @@ function App() {
       })
    }
 
+   function handleUpdateAvatar({avatar}) {
+      api.updateAvatar({avatar})
+      .then((data) => {
+         setCurrentUser(data)
+      })
+   }
+
 
    return (
 
@@ -72,20 +80,11 @@ function App() {
                onCardClick={handleCardClick}
             />
             <Footer />
-            <PopupWithForm
-               name='avatar'
-               title='Обновить аватар?'
+
+            <EditAvatarPopup 
                isOpen={isEditAvatarPopupOpen}
                onClose={closeAllPopups}
-               children={
-                  <>
-                     <div>
-                        <input className="popup__input popup__input_content_avatar" id="avatar" name="avatar" type="url" placeholder="Ссылка на аватар" value="" required />
-                        <span className="popup__input-error" id="error-avatar">Введите адрес картинки</span>
-                     </div>
-                  </>
-               }
-               button='Сохранить'
+               onUpdateAvatar={handleUpdateAvatar}
             />
 
             <EditProfilePopup 
@@ -114,7 +113,7 @@ function App() {
                button='Создать'
             />
 
-            <ImagePopup
+            <ImagePopup  
                card={selectedCard}
                onClose={closeAllPopups}
             />
