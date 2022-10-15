@@ -28,6 +28,9 @@ function App() {
          .then((data) => {
             setCurrentUser(data)
          })
+         .catch((err) => {
+            apiError(err)
+         })
    }, [])
 
    // стейт карточек и обращение к api за начальным массивом 
@@ -38,6 +41,9 @@ function App() {
       api.getInitialCards()
          .then(cards => {
             setCards(cards)
+         })
+         .catch((err) => {
+            apiError(err)
          })
 
    }, [currentUser])
@@ -58,11 +64,18 @@ function App() {
          api.putLike(card._id)
             .then((newCard) => {
                setCards((state) => state.map((c) => c._id === card._id ? newCard : c));
-            });
+            })
+            .catch((err) => {
+               apiError(err)
+            })
+            
       } else {
          api.deleteLike(card._id)
             .then((newCard) => {
                setCards((state) => state.map((c) => c._id === card._id ? newCard : c))
+            })
+            .catch((err) => {
+               apiError(err)
             })
       }
    }
@@ -72,6 +85,9 @@ function App() {
       api.deleteCard(card._id)
          .then(() => {
             setCards((state) => state.filter((element) => element._id !== card._id))
+         })
+         .catch((err) => {
+            apiError(err)
          })
    }
 
@@ -103,12 +119,18 @@ function App() {
          .then((data) => {
             setCurrentUser(data)
          })
+         .catch((err) => {
+            apiError(err)
+         })
    }
 
    function handleUpdateAvatar({ avatar }) {
       api.updateAvatar({ avatar })
          .then((data) => {
             setCurrentUser(data)
+         })
+         .catch((err) => {
+            apiError(err)
          })
    }
 
@@ -117,6 +139,13 @@ function App() {
          .then((newCard) => {
             setCards([newCard, ...cards])
          })
+         .catch((err) => {
+            apiError(err)
+         })
+   }
+
+   function apiError (err) {
+      alert (`Ошибка. ${err}`)
    }
 
    return (

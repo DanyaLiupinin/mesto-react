@@ -31,8 +31,6 @@ function Card({ cardItem, onCardClick, onCardLike, onCardDelete }) {
         onCardDelete(cardItem)
     }
 
-
-
     return (
         <article className="element">
             { isOwn ? <button onClick={handleCardDelete} type="button" className="element__delete" aria-label="delete-photo" /> : ''}
