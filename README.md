@@ -24,6 +24,8 @@ The application also implements:
 - Webpack
 - Async requests 
 - React hooks
+- React routes
+- Functional components
 - Bem methodology
 - Adaptive layout
 - Flex and Grid layout
