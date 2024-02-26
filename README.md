@@ -47,3 +47,4 @@ Start project:
 
 ## Link ##
 https://danyaliupinin.github.io/mesto-react/
+https://www.dkovandeveloper.online/#/projects/mesto
