@@ -46,6 +46,6 @@ Start project:
 ``` npm run start ```
 
 ## Link ##
-https://danyaliupinin.github.io/mesto-react/
+https://danyaliupinin.github.io/react-mesto-api-full/#/signin
 
 https://www.dkovandeveloper.online/#/projects/mesto
